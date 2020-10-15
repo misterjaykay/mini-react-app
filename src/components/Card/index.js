@@ -1,20 +1,34 @@
 import React from 'react';
 import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button } from 'reactstrap';
 
-const Cards = (props) => {
+const Cards = ({ array }) => {
     
   return (
+    <>
+    {array.map(e => 
     <div>
       <Card>
-        <CardImg top width="100%" src="/assets/318x180.svg" alt="Card image cap" />
+        <CardImg top width="50%" src="/assets/318x180.svg" alt={e.recipe} />
         <CardBody>
-          <CardTitle>Card title</CardTitle>
-          <CardSubtitle>Card subtitle</CardSubtitle>
-          <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
+          <CardTitle>{e.recipe}</CardTitle>
+          <CardSubtitle>{e.recipe}</CardSubtitle>
+          <CardText>
+            <ul>
+              {e.ingred.map(ing => 
+                <li>{ing}</li>  
+              )}
+            </ul>
+            <ol>
+              {e.steps.map(step =>
+                <li>{step}</li>
+              )}
+            </ol>
+          </CardText>
           <Button>Button</Button>
         </CardBody>
       </Card>
-    </div>
+    </div>)}
+    </>
   );
 };
 

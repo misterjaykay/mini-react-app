@@ -1,14 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./pages/Home";
 import Result from "./pages/Result";
-import KeywordContext from "./utils/KeywordContext";
+import RecipeContext from "./utils/RecipeContext";
+import axios from 'axios';
 
 function App() {
-  const [keyword, setKeyword] = useState("");
+  const [recipes, setRecipes] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("./data.json")
+      .then((res) => {
+        setRecipes(res.data);
+      })
+      .catch((err) => console.log(err));
+  });
 
   return (
-    <KeywordContext.Provider value={{ keyword, setKeyword }}>
+    <RecipeContext.Provider value={{ recipes, setRecipes }}>
       <Router>
         <div>
           <Switch>
@@ -17,7 +27,7 @@ function App() {
           </Switch>
         </div>
       </Router>
-    </KeywordContext.Provider>
+    </RecipeContext.Provider>
   );
 }
 
