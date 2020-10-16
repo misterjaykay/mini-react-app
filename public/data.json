@@ -36,6 +36,12 @@
             "생크림에 설탕 한스푼씩 추가하며 단단해질때까지 휘핑 (단단한 고깔모자)",
             "마스카포네 넣고 휘핑/폴딩후 냉장고 1시간 보관후 아이싱 바르기",
             "로즈마리로 장식"
+        ],
+        "image": "./assets/images/carrot-cake.jpg",
+        "cuisine": "English",
+        "category":
+        [
+            "Desert"
         ]
     },
     {
@@ -59,6 +65,13 @@
             "밀대로 2~3cm 두께로 밀어주고 쿠키커터로 자르기",
             "계란물 글레이징",
             "섭씨 200도 10~15분"
+        ],
+        "image": "./assets/images/english-scone.jpg",
+        "cuisine": "English",
+        "category":
+        [
+            "Desert",
+            "Breakfast"
         ]
     },
     {
@@ -83,6 +96,13 @@
             "밀대로 2~3cm 두께로 밀어주고 쿠키커터로 자르기",
             "계란물 글레이징",
             "섭씨 220도 10~15분"
+        ],
+        "image": "./assets/images/berry-scone.jpg",
+        "cuisine": "English",
+        "category":
+        [
+            "Desert",
+            "Breakfast"
         ]
     },
     {
@@ -117,6 +137,12 @@
             "새우에 소금 후추 파프리카 추가해서 버무리기",
             "팬을 달구고 버터를 두른후 마늘 노래질때까지 구워주기",
             "브로콜리 데치기"
+        ],
+        "image": "./assets/images/yorkshire-pudding.jpg",
+        "cuisine": "English",
+        "category": 
+        [
+            "Desert"
         ]
     }
 ]

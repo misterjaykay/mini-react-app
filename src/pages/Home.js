@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
-import { Table } from "reactstrap";
+// import { Table } from "reactstrap";
 import RecipeContext from "../utils/RecipeContext";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { Col, Container, Row } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
+import Card from '../components/Card/ListCard';
 
 function Home() {
   const { recipes, setRecipes } = useContext(RecipeContext);
@@ -19,7 +20,7 @@ function Home() {
       <Container>
         <Row>
           <Col size="md-12">
-            <Table>
+            {/* <Table>
               <thead>
                 <tr>
                   <th>#</th>
@@ -40,8 +41,13 @@ function Home() {
                   </tr>
                 ))}
               </tbody>
-            </Table>
+            </Table> */}
           </Col>
+        </Row>
+        <Row>
+          {/* <Col size="md-6"> */}
+            <Card array={recipes} />
+          {/* </Col> */}
         </Row>
       </Container>
     </>
