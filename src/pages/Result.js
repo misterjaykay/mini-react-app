@@ -2,7 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import RecipeContext from "../utils/RecipeContext";
 import { Col, Container, Row } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
-import ArticleCard from "../components/Card/ArticleCard";
+import IngCard from "../components/Card/IngCard";
+import DirCard from '../components/Card/DirCard';
 
 function Result(props) {
   const { recipes, setRecipes } = useContext(RecipeContext);
@@ -10,14 +11,20 @@ function Result(props) {
   const [ingred, setIngred] = useState([]);
   const [subIngred, setSubIngred] = useState([]);
   const [subRecipe, setSubRecipe] = useState("");
+  const [steps, setSteps] = useState([]);
+  const [subSteps, setSubSteps] = useState([]);
 
   useEffect(() => {
     async function setState() {
-      await new Promise((resolve, reject) => setTimeout(resolve, 700));
+      await new Promise((resolve, reject) => setTimeout(resolve, 500));
       setIngred(location.data.ingred);
+      setSteps(location.data.steps);
       if (location.data.sub_recipe !== undefined) {
         setSubRecipe(location.data.sub_recipe);
         setSubIngred(location.data.sub_ingred);
+        if (location.data.sub_steps !== undefined) {
+          setSubSteps(location.data.sub_steps);
+        }
       }
     }
     setState();
@@ -36,23 +43,25 @@ function Result(props) {
       <Container>
         <Row>
           <Col size="md-6">
-            <ArticleCard ingred={ingred} />
+            <IngCard ingred={ingred} />
           </Col>
           <Col size="md-6">
-            <ArticleCard subIngred={subIngred} subRecipe={subRecipe} />
+            <IngCard subIngred={subIngred} subRecipe={subRecipe} />
           </Col>
         </Row>
         <Row>
           <Col size="md-6">
-            <h4>Directions</h4>
+            <DirCard steps={steps}/>
+            {/* <h4>Directions</h4>
             <ol>
               {location.data.steps.map((step) => (
                 <li>{step}</li>
               ))}
-            </ol>
+            </ol> */}
           </Col>
           <Col size="md-6">
-            {location.data.sub_steps !== undefined ? (
+            <DirCard subSteps={subSteps} subRecipe={subRecipe} />
+            {/* {location.data.sub_steps !== undefined ? (
               <>
                 <h4>{location.data.sub_recipe} Directions</h4>
                 <ol>
@@ -63,7 +72,7 @@ function Result(props) {
               </>
             ) : (
               <div></div>
-            )}
+            )} */}
           </Col>
         </Row>
         <Row>
