@@ -3,19 +3,23 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./pages/Home";
 import Result from "./pages/Result";
 import RecipeContext from "./utils/RecipeContext";
-import axios from 'axios';
+import API from "./utils/API";
 
 function App() {
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("./data.json")
-      .then((res) => {
-        setRecipes(res.data);
-      })
-      .catch((err) => console.log(err));
-  });
+    onLoad();
+  },[]);
+
+  function onLoad() {
+    API.getAllRecipes()
+    .then((res) => {
+      console.log(res.data);
+      setRecipes(res.data);
+    })
+    .catch((err) => console.log(err));
+  }
 
   return (
     <RecipeContext.Provider value={{ recipes, setRecipes }}>

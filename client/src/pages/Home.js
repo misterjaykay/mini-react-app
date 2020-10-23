@@ -4,7 +4,7 @@ import RecipeContext from "../utils/RecipeContext";
 // import { Link } from "react-router-dom";
 import { Col, Container, Row } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
-import Card from '../components/Card/ListCard';
+import Card from "../components/Card/ListCard";
 
 function Home() {
   const { recipes, setRecipes } = useContext(RecipeContext);
@@ -16,38 +16,77 @@ function Home() {
 
   return (
     <>
-      <Jumbotron title={"Recipe List"} subtitle={"Get All The Recipes Here"} />
+      <Jumbotron title={"Recipe List"} subtitle={"Get All The Recipes From Here, or You Can Add Yours Favorite Recipes."} />
       <Container>
         <Row>
           <Col size="md-12">
-            {/* <Table>
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Recipe name</th>
-                  <th>View Details</th>
-                </tr>
-              </thead>
-              <tbody>
-                {recipes.map((recipe) => (
-                  <tr key={recipe.id}>
-                    <th scope="row">{recipe.id}</th>
-                    <td>{recipe.name}</td>
-                    <td>
-                      <Link to={{ pathname: "/result", data: recipe }}>
-                        <i className="fas fa-utensils"></i>
-                      </Link>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </Table> */}
+            <form>
+              <div className="form-row">
+                <div className="form-group col-md-6">
+                  <label for="recipe">Recipe Name</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="recipe"
+                    placeholder="Enter Your Recipe(Ex. Salmon Steak)"
+                  ></input>
+                </div>
+                <div className="form-group col-md-5">
+                  <label for="ingredient">Ingredient</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="ingredient"
+                    placeholder="Enter Ingredients Here(Ex. Scallion 100g)"
+                  ></input>
+                </div>
+                <div className="form-group col-md-1">
+                  <button type="button" className="btn btn-primary mt-4">add</button>
+                </div>
+                <div className="form-group col-md-5">
+                  <label for="Direction">Direction</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="Direction"
+                    placeholder="Enter Directions Here"
+                  ></input>
+                </div>
+                <div className="form-group col-md-1">
+                  <button type="button" className="btn btn-primary mt-4">add</button>
+                </div>
+                <div className="form-group col-md-5">
+                  <label for="Cuisine">Cuisine</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="Cuisine"
+                    placeholder="Enter Cuisine Type Here(Ex. Korean, English, Italian)"
+                  ></input>
+                </div>
+                <div className="form-group col-md-1">
+                  <button type="button" className="btn btn-primary mt-4">add</button>
+                </div>
+                <div className="form-group offset-md-3 col-md-6">
+                  <label for="Category">Category</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="Category"
+                    placeholder="Enter Recipe Categories Here(Ex. Lunch, Salad, Dessert)"
+                  ></input>
+                </div>
+                <div className="form-group col-md-1">
+                  <button type="submit" className="btn btn-primary mt-3">
+                    Submit Recipe
+                  </button>
+                </div>
+              </div>
+            </form>
           </Col>
         </Row>
         <Row>
-          {/* <Col size="md-6"> */}
-            <Card array={recipes} />
-          {/* </Col> */}
+          <Card array={recipes} />
         </Row>
       </Container>
     </>

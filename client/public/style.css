@@ -5,3 +5,11 @@ a {
 i {
     color: black;
 }
+
+.jumbotron {
+    background-color: #E0BBE4;
+}
+
+.jumbotron h1, p {
+    color: #000;
+}
