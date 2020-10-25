@@ -9,17 +9,18 @@ import API from "../utils/API";
 
 function Home() {
   const { recipes, setRecipes } = useContext(RecipeContext);
-  const [ newRecipe, setNewRecipe ] = useState({
+  const [newRecipe, setNewRecipe] = useState({
     recipe: "",
     ingredient: [],
     direction: [],
     category: [],
-    cuisine: ""
+    cuisine: "",
   });
 
   const titleText = {
     main: "Recipe List",
-    subtitle: "Get All The Recipes From Here, or You Can Add Yours Favorite Recipes."
+    subtitle:
+      "Get All The Recipes From Here, or You Can Add Yours Favorite Recipes.",
   };
 
   const InputChange = ({ target }) => {
@@ -28,14 +29,14 @@ function Home() {
     if (name === "recipe" || name === "cuisine") {
       setNewRecipe({
         ...newRecipe,
-        [name]: value
-      })
+        [name]: value,
+      });
     } else {
-    setNewRecipe({
-      ...newRecipe, 
-      [name]: [value]
-    })
-  }
+      setNewRecipe({
+        ...newRecipe,
+        [name]: [...newRecipe[name], value],
+      });
+    }
   };
 
   function handleAddInput(e) {
@@ -56,12 +57,12 @@ function Home() {
   function handleFormSubmit(event) {
     event.preventDefault();
     API.saveRecipe(newRecipe)
-    .then(res => {
-      console.log(res)
-    })
-    .catch(err => {
-      console.log(err)
-    });
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   return (
@@ -83,6 +84,7 @@ function Home() {
                     placeholder="Enter Your Recipe(Ex. Salmon Steak)"
                   ></input>
                 </div>
+
                 <div className="form-group col-md-5 ingredient">
                   <label htmlFor="ingredient">Ingredient</label>
                   <input
@@ -94,8 +96,27 @@ function Home() {
                     placeholder="Enter Ingredients Here(Ex. Scallion 100g)"
                   ></input>
                 </div>
+                {/* <div className="form-group col-md-5 ingredient">
+                  <label htmlFor="ingredient">Ingredient</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="ingredient"
+                    name="ingredient"
+                    onChange={InputChange}
+                    placeholder="Enter Ingredients Here(Ex. Scallion 100g)"
+                  ></input>
+                </div> */}
+
                 <div className="form-group col-md-1">
-                  <button onClick={handleAddInput} name="ingredient" type="button" className="btn btn-primary mt-4">add</button>
+                  <button
+                    onClick={handleAddInput}
+                    name="ingredient"
+                    type="button"
+                    className="btn btn-primary mt-4"
+                  >
+                    add
+                  </button>
                 </div>
                 <div className="form-group col-md-5 direction">
                   <label htmlFor="Direction">Direction</label>
@@ -109,7 +130,14 @@ function Home() {
                   ></input>
                 </div>
                 <div className="form-group col-md-1">
-                  <button onClick={handleAddInput} name="direction" type="button" className="btn btn-primary mt-4">add</button>
+                  <button
+                    onClick={handleAddInput}
+                    name="direction"
+                    type="button"
+                    className="btn btn-primary mt-4"
+                  >
+                    add
+                  </button>
                 </div>
                 <div className="form-group col-md-5 category">
                   <label htmlFor="Category">Category</label>
@@ -123,7 +151,14 @@ function Home() {
                   ></input>
                 </div>
                 <div className="form-group col-md-1">
-                  <button onClick={handleAddInput} name="category" type="button" className="btn btn-primary mt-4">add</button>
+                  <button
+                    onClick={handleAddInput}
+                    name="category"
+                    type="button"
+                    className="btn btn-primary mt-4"
+                  >
+                    add
+                  </button>
                 </div>
                 <div className="form-group offset-md-3 col-md-6">
                   <label htmlFor="Cuisine">Cuisine</label>
@@ -137,7 +172,11 @@ function Home() {
                   ></input>
                 </div>
                 <div className="form-group col-md-1">
-                  <button onClick={handleFormSubmit} type="submit" className="btn btn-primary mt-3">
+                  <button
+                    onClick={handleFormSubmit}
+                    type="submit"
+                    className="btn btn-primary mt-3"
+                  >
                     Submit Recipe
                   </button>
                 </div>

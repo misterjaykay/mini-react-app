@@ -6,7 +6,7 @@ i {
     color: black;
 }
 
-.jumbotron {
+.jumbotron, .pink-button {
     background-color: #E0BBE4;
 }
 
