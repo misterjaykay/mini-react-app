@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const recipeSchema = new Schema({
-    title: {
+    recipe: {
         type: String,
         required: true
     },
@@ -17,7 +17,8 @@ const recipeSchema = new Schema({
         }
     ],
     image: {
-        type: String
+        type: String,
+        default: "https://via.placeholder.com/500"
     },
     cuisine: {
         type: String

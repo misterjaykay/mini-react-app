@@ -9,5 +9,15 @@ export default {
         .catch(err => {
             return err;
         })
+    },
+
+    saveRecipe: function(newRecipe) {
+        return axios.post("api/save", newRecipe)
+        .then(res => {
+            return res;
+        })
+        .catch(err => {
+            return err;
+        })
     }
 }

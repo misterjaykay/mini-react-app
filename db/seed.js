@@ -9,7 +9,7 @@ mongoose.connect("mongodb://localhost/recipe", {
 
 const recipeSeed = [
     {
-        title: "Carrot Cake",
+        recipe: "Carrot Cake",
         ingreident : [
             "350g Cake Floure",
             "300ml Avocado Oil (or Sunflower/Grapeseed)",
@@ -40,7 +40,7 @@ const recipeSeed = [
         category: [ "Desert" ]
     },
     {
-        title: "English Scone",
+        recipe: "English Scone",
         ingreident: [
             "밀가루 (박력분/중력분) 300g",
             "무염버터 90g",
@@ -66,7 +66,7 @@ const recipeSeed = [
         ]
     },
     {
-        title: "Berry Scone",
+        recipe: "Berry Scone",
         ingreident: [
             "밀가루 (박력분/중력분) 400g",
             "무염버터 90g",
@@ -93,7 +93,7 @@ const recipeSeed = [
         ]
     },
     {
-        title: "Yorkshire Pudding",
+        recipe: "Yorkshire Pudding",
         ingreident: [
             "100g Flour",
             "100ml Milk",

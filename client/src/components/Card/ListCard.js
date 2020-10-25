@@ -8,11 +8,11 @@ const Cards = ({ array }) => {
   return (
     <>
     {array.map(e => 
-    <Col key={e.name} size="md-3">
-      <Card className="text-center mt-1 mb-4 mr-1">
-        <CardImg height="50%" width="50%" src={e.image} alt={e.name} />
+    <Col key={e.recipe} size="md-3">
+      <Card classrecipe="text-center mt-1 mb-4 mr-1">
+        <CardImg height="50%" width="50%" src={e.image} alt={e.recipe} />
         <CardBody>
-          <CardTitle><h4>{e.name}</h4></CardTitle>
+          <CardTitle><h4>{e.recipe}</h4></CardTitle>
           <CardText>
             Recipe Origin: <strong>{e.cuisine}</strong>
             <br />

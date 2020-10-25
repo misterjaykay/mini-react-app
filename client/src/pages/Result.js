@@ -13,6 +13,10 @@ function Result(props) {
   const [subRecipe, setSubRecipe] = useState("");
   const [steps, setSteps] = useState([]);
   const [subSteps, setSubSteps] = useState([]);
+  const titleText = {
+    main: location.data.name,
+    subtitle: "Get All The Recipes From Here, or You Can Add Yours Favorite Recipes."
+  }
 
   useEffect(() => {
     async function setState() {
@@ -37,8 +41,8 @@ function Result(props) {
   return (
     <>
       <Jumbotron
-        title={location.data.name}
-        subtitle={"Get All The Recipes Here"}
+        title={titleText.main}
+        subtitle={titleText.subtitle}
       />
       <Container>
         <Row>
