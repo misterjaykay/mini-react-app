@@ -10,7 +10,7 @@ mongoose.connect("mongodb://localhost/recipe", {
 const recipeSeed = [
     {
         recipe: "Carrot Cake",
-        ingreident : [
+        ingredient : [
             "350g Cake Floure",
             "300ml Avocado Oil (or Sunflower/Grapeseed)",
             "300g Brown Sugar",

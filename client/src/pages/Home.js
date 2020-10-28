@@ -1,14 +1,18 @@
 import React, { useContext, useState } from "react";
-// import { Table } from "reactstrap";
 import RecipeContext from "../utils/RecipeContext";
-// import { Link } from "react-router-dom";
 import { Col, Container, Row } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
-import Card from "../components/Card/ListCard";
+import ListCard from "../components/Card/ListCard";
 import API from "../utils/API";
 
 function Home() {
   const { recipes, setRecipes } = useContext(RecipeContext);
+  const titleText = {
+    main: "Recipe List",
+    subtitle:
+      "Get All The Recipes From Here, or You Can Add Yours Favorite Recipes.",
+  };
+  const [ string, setString ] = useState("");
   const [newRecipe, setNewRecipe] = useState({
     recipe: "",
     ingredient: [],
@@ -16,12 +20,6 @@ function Home() {
     category: [],
     cuisine: "",
   });
-
-  const titleText = {
-    main: "Recipe List",
-    subtitle:
-      "Get All The Recipes From Here, or You Can Add Yours Favorite Recipes.",
-  };
 
   const InputChange = ({ target }) => {
     const { name, value } = target;
@@ -32,17 +30,24 @@ function Home() {
         [name]: value,
       });
     } else {
-      setNewRecipe({
-        ...newRecipe,
-        [name]: [...newRecipe[name], value],
-      });
+      setString(value);
     }
+    // else {
+    //   setNewRecipe({
+    //     ...newRecipe,
+    //     [name]: [...newRecipe[name], value],
+    //   });
+    // }
   };
 
   function handleAddInput(e) {
     e.preventDefault();
-
     const name = e.target.name;
+    setNewRecipe({
+      ...newRecipe,
+      [name]: [...newRecipe[name], string]
+    });
+
     const ingre = document.querySelector(`.${name}`);
     const input = document.createElement("input");
 
@@ -52,6 +57,7 @@ function Home() {
     input.setAttribute("name", `${name}`);
     input.setAttribute("placeholder", `Enter More ${name}`);
     ingre.appendChild(input);
+    input.addEventListener("change", InputChange);
   }
 
   function handleFormSubmit(event) {
@@ -59,10 +65,17 @@ function Home() {
     API.saveRecipe(newRecipe)
       .then((res) => {
         console.log(res);
+        API.getAllRecipes()
+        .then((res) => {
+          setRecipes(res.data)
+          console.log(res)
+        })
+        .catch((err) => console.log(err));
       })
       .catch((err) => {
         console.log(err);
       });
+
   }
 
   return (
@@ -73,6 +86,7 @@ function Home() {
           <Col size="md-12">
             <form>
               <div className="form-row">
+
                 <div className="form-group col-md-6">
                   <label htmlFor="recipe">Recipe Name</label>
                   <input
@@ -96,17 +110,6 @@ function Home() {
                     placeholder="Enter Ingredients Here(Ex. Scallion 100g)"
                   ></input>
                 </div>
-                {/* <div className="form-group col-md-5 ingredient">
-                  <label htmlFor="ingredient">Ingredient</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="ingredient"
-                    name="ingredient"
-                    onChange={InputChange}
-                    placeholder="Enter Ingredients Here(Ex. Scallion 100g)"
-                  ></input>
-                </div> */}
 
                 <div className="form-group col-md-1">
                   <button
@@ -118,6 +121,7 @@ function Home() {
                     add
                   </button>
                 </div>
+
                 <div className="form-group col-md-5 direction">
                   <label htmlFor="Direction">Direction</label>
                   <input
@@ -129,6 +133,7 @@ function Home() {
                     placeholder="Enter Directions Here"
                   ></input>
                 </div>
+
                 <div className="form-group col-md-1">
                   <button
                     onClick={handleAddInput}
@@ -139,6 +144,7 @@ function Home() {
                     add
                   </button>
                 </div>
+
                 <div className="form-group col-md-5 category">
                   <label htmlFor="Category">Category</label>
                   <input
@@ -150,6 +156,7 @@ function Home() {
                     placeholder="Enter Recipe Categories Here(Ex. Lunch, Salad, Dessert)"
                   ></input>
                 </div>
+
                 <div className="form-group col-md-1">
                   <button
                     onClick={handleAddInput}
@@ -160,6 +167,7 @@ function Home() {
                     add
                   </button>
                 </div>
+
                 <div className="form-group offset-md-3 col-md-6">
                   <label htmlFor="Cuisine">Cuisine</label>
                   <input
@@ -171,6 +179,7 @@ function Home() {
                     placeholder="Enter Cuisine Type Here(Ex. Korean, English, Italian)"
                   ></input>
                 </div>
+                
                 <div className="form-group col-md-1">
                   <button
                     onClick={handleFormSubmit}
@@ -180,12 +189,13 @@ function Home() {
                     Submit Recipe
                   </button>
                 </div>
+                
               </div>
             </form>
           </Col>
         </Row>
         <Row>
-          <Card array={recipes} />
+          <ListCard array={recipes} />
         </Row>
       </Container>
     </>
