@@ -9,11 +9,11 @@ function Result(props) {
       data: {
         _id: id,
         category: [...cat],
-        cuisine: cuisine,
+        cuisine,
         direction: [...dir],
-        image: image,
+        image,
         ingredient: [...ing],
-        recipe: recipe,
+        recipe,
       },
     },
   } = props;
@@ -61,19 +61,6 @@ function Result(props) {
           <Col size="md-6">
             <DirCard direction={obj.direction} />
           </Col>
-          {/* <DirCard subSteps={subSteps} subRecipe={subRecipe} /> */}
-          {/* {location.data.sub_steps !== undefined ? (
-              <>
-                <h4>{location.data.sub_recipe} Directions</h4>
-                <ol>
-                  {location.data.sub_steps.map((step) => (
-                    <li>{step}</li>
-                  ))}
-                </ol>
-              </>
-            ) : (
-              <div></div>
-            )} */}
         </Row>
         <Row>
           <Col size="md-1">
