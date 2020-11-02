@@ -2,6 +2,10 @@ a {
     color: white;
 }
 
+/* li {
+    list-style-type: none;
+} */
+
 .jumbotron, .pink-button {
     background-color: #E0BBE4;
 }

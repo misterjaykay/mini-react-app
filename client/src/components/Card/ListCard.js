@@ -14,7 +14,7 @@ const Cards = ({ array }) => {
   return (
     <>
       {array.map((e) => (
-        <Col key={e.recipe} size="md-3">
+        <Col key={e._id} size="md-3">
           <Card className="text-center mt-1 mb-4 mr-1">
             <CardImg height="50%" width="50%" src={e.image} alt={e.recipe} />
             <CardBody>
