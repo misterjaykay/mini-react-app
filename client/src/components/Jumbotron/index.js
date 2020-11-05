@@ -1,5 +1,6 @@
 import React from "react";
 import { Container } from '../Grid';
+import "./style.css";
 
 export default function Jumbotron({ fluid, title, subtitle }) {
   return (

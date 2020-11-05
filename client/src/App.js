@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./pages/Home";
 import Result from "./pages/Result";
+import Entry from "./pages/Entry";
 import RecipeContext from "./utils/RecipeContext";
 import API from "./utils/API";
 
@@ -28,6 +29,7 @@ function App() {
           <Switch>
             <Route exact path={["/", "/home"]} component={Home} />
             <Route exact path="/result" component={Result} />
+            <Route exact path="/entry" component={Entry} />
           </Switch>
         </div>
       </Router>
