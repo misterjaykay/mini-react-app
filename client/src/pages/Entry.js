@@ -17,6 +17,7 @@ function Home() {
       "Get All The Recipes From Here, or You Can Add Yours Favorite Recipes.",
   };
   const [string, setString] = useState("");
+  const [success, setSuccess] = useState(false);
   const [newRecipe, setNewRecipe] = useState({
     recipe: "",
     ingredient: [],
@@ -61,7 +62,6 @@ function Home() {
         [name]: string,
       });
       // const inputField = document.querySelector(`#${name}`);
-      
     } else {
       setNewRecipe({
         ...newRecipe,
@@ -111,12 +111,25 @@ function Home() {
       setError({ ...error, cuisine: "" });
     } else {
       API.saveRecipe(newRecipe)
-        .then((res) => {
+        .then(async (res) => {
           console.log(res);
+          if (res.status === 200) {
+            setSuccess(true);
+            await new Promise((resolve, reject) => setTimeout(resolve, 1500));
+            setNewRecipe({
+              ...newRecipe,
+              recipe: "",
+              ingredient: [],
+              direction: [],
+              category: [],
+              cuisine: ""
+            })
+            setSuccess(false);
+          }
           API.getAllRecipes()
             .then((res) => {
               setRecipes(res.data);
-              console.log(res);
+              // console.log(res);
             })
             .catch((err) => console.log(err));
         })
@@ -131,6 +144,16 @@ function Home() {
       <Jumbotron title={titleText.main} subtitle={titleText.subtitle} />
       <Navbar />
       <Container>
+        <Row>
+          <Col size="md-12">
+            {success === true ? (
+              <Alert severity="success">Successfully Submitted!</Alert>
+            ) : (
+              <div></div>
+              // <Alert severity="warning">Your Recipe cannot be Submitted.</Alert>
+            )}
+          </Col>
+        </Row>
         <Row>
           <Col size="md-12">
             <h4>New Recipe Form</h4>
@@ -148,7 +171,8 @@ function Home() {
                   value="recipe"
                   size="md-1"
                   function={handleAddRecipe}
-                  text="Add" />
+                  text="Add"
+                />
 
                 <FormInput
                   value="ingredient"
@@ -200,7 +224,8 @@ function Home() {
                   value="cuisine"
                   size="md-1"
                   function={handleAddRecipe}
-                  text="Add" />
+                  text="Add"
+                />
               </div>
             </form>
           </Col>

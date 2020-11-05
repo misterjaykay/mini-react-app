@@ -11,7 +11,7 @@ module.exports = {
     console.log('body', req.body);
     db.Recipe.create(req.body)
     .then((data) => {
-      console.log('This has been created on your database', data);
+      console.log('This recipe has been created on your database', data);
       res.json(data)
     })
     .catch((err) => {

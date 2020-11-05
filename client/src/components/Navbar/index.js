@@ -4,7 +4,7 @@ import "./style.css";
 
 function Nav(props) {
     return(
-    <nav className="navbar navbar-expand-sm navbar-light bg-light">
+    <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
         <Link className="navbar-brand" to="/">
             Recipe Treasure Box
         </Link>
@@ -16,7 +16,7 @@ function Nav(props) {
                 window.location.pathname === "/" ||
                 window.location.pathname === "/home" ? "nav-link active" : "nav-link"}
             >
-                Home
+                Browse All
             </Link>
             </li>
             <li className="nav-item">
@@ -24,7 +24,7 @@ function Nav(props) {
                 className={
                 window.location.pathname === "/entry"  ? "nav-link active"  : "nav-link"}
             >
-                Entry
+                Enter New Recipe
             </Link>
             </li>
         </ul>
