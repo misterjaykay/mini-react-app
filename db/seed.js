@@ -41,7 +41,7 @@ const recipeSeed = [
     },
     {
         recipe: "English Scone",
-        ingreident: [
+        ingredient: [
             "밀가루 (박력분/중력분) 300g",
             "무염버터 90g",
             "베이킹 파우더 1ts (5ml)",
@@ -67,7 +67,7 @@ const recipeSeed = [
     },
     {
         recipe: "Berry Scone",
-        ingreident: [
+        ingredient: [
             "밀가루 (박력분/중력분) 400g",
             "무염버터 90g",
             "베이킹 파우더 3ts (15ml)",
@@ -94,7 +94,7 @@ const recipeSeed = [
     },
     {
         recipe: "Yorkshire Pudding",
-        ingreident: [
+        ingredient: [
             "100g Flour",
             "100ml Milk",
             "100ml Water",

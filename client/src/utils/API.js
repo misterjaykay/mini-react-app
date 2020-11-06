@@ -12,12 +12,34 @@ export default {
     },
 
     saveRecipe: function(newRecipe) {
-        return axios.post("api/save", newRecipe)
+        return axios.post("/api/save", newRecipe)
         .then(res => {
             return res;
         })
         .catch(err => {
             return err;
         })
-    }
+    },
+
+    userSignUp: function(userInfo) {
+        return axios.post("/api/signup", userInfo)
+        .then(res => {
+            return res;
+        })
+        .catch(err => {
+            return err;
+        })
+    },
+
+    userLogIn: function(userInfo) {
+        return axios.post("/api/login", userInfo)
+        .then(res => {
+            return res;
+        })
+        .catch(err => {
+            return err;
+        });
+    },
+
+    
 }
